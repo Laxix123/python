@@ -1,0 +1,43 @@
+while True:
+
+    print() 
+    Anio = int(input("Ingrese el año de su Nacimiento \n "));
+    Dia = int(input("Ingrese el Día de su Nacimiento \n "));
+    Mes = int(input("Ingrese el Mes de su Nacimiento \n "));
+    print()
+
+    formato = Anio , "/" , Mes, "/", Dia 
+    print("Su fecha de Nacimiento es el ", formato);
+
+    if Anio >= 1997 and Anio <= 2012:
+        print("tu año es : " , Anio , " Y eres de la Generación Z ");
+    elif Anio >= 1981 and Anio <= 1996: 
+        print("tu año es : " , Anio , " Y eres de la Generación Millennials ");
+    elif Anio >= 1965 and Anio <= 1980:
+        print("tu año es : " , Anio , " Y eres de la Generación X ");
+    elif Anio >= 1945 and Anio <= 1964:
+        print("tu año es : " , Anio , " Y eres de la Generación BAby Boomers ");
+    elif Anio >= 1900 and Anio <=1945:
+        print("tu año es " , Anio , " Y eres de la Generación Silenciosa ");
+
+    ultimo_numero = Anio % 10
+
+    if ultimo_numero >= 0 and ultimo_numero <= 1 :
+        print("Tu signo Zodiacal es Rata ");
+    elif ultimo_numero >=2 and ultimo_numero <= 3 :
+        print("Tu signo Zodiacal es Búfalo ");
+    elif ultimo_numero >=4 and ultimo_numero <= 5 :
+        print("Tu signo Zodiacal es Tigre ");
+    elif ultimo_numero >=6 and ultimo_numero <= 7 :
+        print("Tu signo Zodiacal es Conejo ");
+    elif ultimo_numero >=8 and ultimo_numero <= 9 :
+        print("Tu signo Zodiacal es Dragón ");
+    
+
+    op = int(input("Desea salir \n 1.- Si  \n 2.- No \n"))
+    
+    if op == 1 :
+        print("Nos vemos ")
+        break 
+    elif op == 2 :
+        print("Seguimos con el prcedimiento \n ")
