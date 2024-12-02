@@ -1,5 +1,5 @@
 Paises_Prohibidos = " Afganistán " , " Los Balcanes " , " Bielorusia " , " Burma " , " Cuba " , " República Centroafricana " , " República Democrática del Congo " , " Etiopia " , " Hong Kong (relacionadas) " , " Irán " , "  Irak " , " Libano " , " Libia " , " Mali " , "Nicaragua " , " Corea del Norte " , " Rusia " , " Somalia " , " Sudán " , " Sudán del Sur " , " Siria " , " Ucrania/Rusia " , " Venezuela " , " Yemen y Zimbabue"
-Rut = input(("Ingrese su Rut \n "))
+Rut = input(("Ingrese su Rut (**.***.***-*) \n "))
 Edad = int(input("Ingrese su Edad \n "))
 Origen_fondos = input("Ingrese el Origen de los Fondos \n Eliga una OP \n 1.- Cheque \n 2.- Vale vista \n 3.- Depósito a plazo \n ")
 Pesos = float(input("Ingrese su monto \n "))
@@ -7,31 +7,31 @@ Origen_Orden_Pais = input("Ingrese el Pais en el que Hace la Orden \n ")
 #------------------------------
 USD = 980
 conversion = (Pesos / USD)
-paraiso_fiscal = False 
-Efectivo = False
 #------------------------------
-paraiso_fiscal = input("¿ Proviene de una empresa en paraiso Fiscla ? \n ")
+paraiso_fiscal = input("¿ Proviene de una empresa en paraíso Fiscla ? \n 1.- Si \n 2.- No \n ")
 
 Efectivo = int(input(" ¿ El deposito es en Efectivo ? \n 1.- Si \n 2.- No \n "))
 
 while True:
     if Edad < 18 :
-        print("Usted es Sospechoso por ser menor de edad")
+        print(" Usted es Sospechoso por ser menor de edad")
         break
     elif Origen_fondos == " " :
-        print("Usted es Sospechoso por que no puso ningun tipo fondo ")
+        print(" Usted es Sospechoso por que no puso ningun tipo fondo ")
         break
     elif Origen_Orden_Pais == Paises_Prohibidos:
-        print("Usted es Sospechoso por que el pais esta prohibido ")
+        print(" Usted es Sospechoso por que el pais esta prohibido ")
     elif conversion > 10.000 :
-        print("Usted es Sospechoso por el monto Exedido ")
+        print(" Usted es Sospechoso por el monto Exedido ")
         break
-    
-    if Efectivo == 1 :
-        print(" ")
+    elif Efectivo == 1  :
+        print(" Usted es Sospechoso por el Deposito en Efectivo ")
+        break
+    elif paraiso_fiscal == 1 :
+        print(" Usted es Sospechoso por que proviene de una empresa en paraíso fiscal ") 
+        break
 
-    elif paraiso_fiscal :
-        True
-        break
+
+
 
 
