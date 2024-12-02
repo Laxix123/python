@@ -1,0 +1,63 @@
+def deteccion_laft():
+    Monto_Maximo_Sospechoso = 10000.0
+    Paises_Prohibidos = [" Afganistán " , " Los Balcanes " , " Bielorusia " , " Burma " , " Cuba " , " República Centroafricana " , " República Democrática del Congo " , " Etiopia " , " Hong Kong (relacionadas) " , " Irán " , "  Irak " , " Libano " , " Libia " , " Mali " , "Nicaragua " , " Corea del Norte " , " Rusia " , " Somalia " , " Sudán " , " Sudán del Sur " , " Siria " , " Ucrania/Rusia " , " Venezuela " , " Yemen y Zimbabue"]
+    totalRutsSospechosos = ""
+    paraisoFiscal = False
+    efectivo = False
+    while True:
+        rut = input("Ingrese el Rut (formato: XXXXXXXX-X): ")
+
+        if len(rut) != 10:
+            print("Error: Rut inválido. Inténtelo de nuevo.")
+        else:
+            edad = int(input("Ingrese la edad del titular: "))
+            if edad <= 17 or edad > 120:
+                print("Error: Edad inválida. Inténtelo de nuevo.")
+            else:
+                origenFondos = input("Ingrese el origen de los fondos (cheque, depósito, vale vista, etc.): ")
+                if origenFondos == "":
+                    print("Error: Debe indicar el origen de los fondos.")
+                else:
+                    montoCLP = float(input("Ingrese el monto en pesos chilenos (CLP): "))
+                    valorDolar = float(input("Ingrese el valor del dólar (USD/CLP): "))
+                    montoUSD = montoCLP / valorDolar
+
+                    origenPago = input("Ingrese el país de origen de la orden de pago: ")
+
+                    paraisoFiscal = input("¿Proviene de un paraíso fiscal? : \n 1.- Si \n 2.-No \n ")
+
+                    efectivo = input("¿Es un depósito en efectivo? :  \n 1.- Si \n 2.-No \n ")
+
+                    esSospechosa = False
+
+                    # Validar que la operación no sea sospechosa
+                    if origenFondos == "":
+                        esSospechosa = True
+                    elif edad < 18:
+                        esSospechosa = True
+                    elif efectivo == 1:
+                        esSospechosa = True
+                    elif origenPago in Paises_Prohibidos:
+                        esSospechosa = True
+                    elif paraisoFiscal == 1:
+                        esSospechosa = True
+                    elif montoUSD > Monto_Maximo_Sospechoso:
+                        esSospechosa = True
+
+                    if esSospechosa:
+                        totalRutsSospechosos += rut + ", "
+                        print("La operación es sospechosa. El Rut será reportado.")
+                    else:
+                        print("La operación no es sospechosa.")
+
+        continuar = input("¿Desea ingresar otra operación? : \n 1.- Si \ 2.- No \n ")
+        if continuar == 2:
+            break
+
+    # Mostramos los ruts sospechosos
+    if len(totalRutsSospechosos) > 0:
+        print("Ruts de operaciones sospechosas reportadas:", totalRutsSospechosos(", "))
+    else:
+        print("No se reportaron operaciones sospechosas.")
+
+deteccion_laft()
